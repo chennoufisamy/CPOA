@@ -5,14 +5,14 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
 
-	const cardsNewsInfos = {
+	const cardsHomeInfos = {
 		program: {title: "programme", button_title: "en savoir plus", link: "/program"},
 		players: {title: "les joueurs", button_title: "en savoir plus", link: "/players"}
 	}
 
-	const cardsNews = [
-		cardsNewsInfos.program,
-		cardsNewsInfos.players
+	const cardsHome = [
+		cardsHomeInfos.program,
+		cardsHomeInfos.players
 	]
 
   return (
@@ -29,12 +29,12 @@ export default function Home() {
 				<img className={styles.img_header} src="/images/bgheader.jpg" />
 				<img className={styles.logo} src="/images/logo.png" />
 			</div>
-			<section id="home">
+			<section className={styles.section_home} id="home">
 				<div className={styles.container_title}>
 					<h1 className={styles.main_title}>5e edition</h1>
 					<p className={styles.sub_title}>du 15 au 21 mai 2022</p>
 				</div>
-				<CardsList cards={cardsNews} />
+				<CardsList cards={cardsHome} />
 			</section>
 			<section id="news">
 				<div className={styles.container_title}>

@@ -11,9 +11,8 @@ const Card = ({ title, button_title, link }) => {
         purple: {bg: "#e9dafd", border: "#ba8bf6"}
     }
 
-    var keys = Object.keys(colors)
-    var randomKey = keys[Math.floor(Math.random() * keys.length)]
-
+    let keys = Object.keys(colors)
+    let randomKey = keys[Math.floor(Math.random() * keys.length)]
     let color = colors[randomKey]
 
     return (
