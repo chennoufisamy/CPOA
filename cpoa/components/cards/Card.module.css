@@ -1,0 +1,29 @@
+.list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 4rem;
+}
+
+.container {
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #C9F4BE;
+}
+
+.title {
+    font-size: 3rem;
+    text-transform: capitalize;
+}
+
+.button {
+    display: block;
+    font-weight: 700;
+    padding: 1rem;
+    text-transform: uppercase;
+    border-radius: 5rem;
+    border: 1px solid #75F128;
+}

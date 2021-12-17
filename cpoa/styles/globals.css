@@ -1,3 +1,10 @@
+:root {
+	--text-main-color: black;
+	--text-scd-color: rgba(0,0,0,.33);
+	--bg-main-color: white;
+	--bg-scd-color: #acacac
+}
+
 html,
 body {
   padding: 0;
@@ -11,6 +18,43 @@ a {
   text-decoration: none;
 }
 
+input, button, textarea {
+	outline: none;
+	border: none;
+	background: none;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
 * {
   box-sizing: border-box;
+}
+
+header {
+	position: absolute;
+	top: 0;
+	z-index: 1000;
+	background-color: var(--bg-main-color);
+	position: fixed;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+
+.nav-header {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.link-header {
+	margin: 0 1rem;
+	padding: 1rem;
+	font-weight: 700;
+	text-transform: uppercase;
 }
