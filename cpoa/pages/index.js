@@ -1,18 +1,29 @@
 import Head from "next/head";
 import CardsList from "../components/cards/CardsList";
+import CardNewsList from "../components/cards/CardsNewsList";
 import Header from "../components/header/header";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-
+	//<a href="http://www.onlinewebfonts.com">oNline Web Fonts</a>
 	const cardsHomeInfos = {
 		program: {title: "programme", button_title: "en savoir plus", link: "/program"},
 		players: {title: "les joueurs", button_title: "en savoir plus", link: "/players"}
 	}
 
+	const cardsNewsInfos = {
+		news1: {image: "/images/news1.jpg", title: "Les dates de l'édition 2022 sont connues!", text:"L'Open Parc Auvergne-Rhône-Alpes est qualifié comme 'un des plus beaux tournois ATP 250, après avoir connu quatre premières éditions de très haut niveau en accueillant un plateau de joueurs internationaux extrêmement relevé comme par exemple : Stefanos TSITSIPAS, Jo-Wilfried TSONGA, Dominic THIEM, Gaël MONFILS, Juan Martin DEL POTRO, Milos RAONIC, Nick KYRGIOS, Denis SHAPOVALOV, Richard GASQUET, Felix AUGER-ALIASSIME …", link: "/news"}
+	}
+
 	const cardsHome = [
 		cardsHomeInfos.program,
 		cardsHomeInfos.players
+	]
+
+	const cardsNews = [
+		cardsNewsInfos.news1,
+		cardsNewsInfos.news1,
+		cardsNewsInfos.news1
 	]
 
   return (
@@ -40,6 +51,7 @@ export default function Home() {
 				<div className={styles.container_title}>
 					<h1 className={styles.main_title}>actualité</h1>
 				</div>
+				<CardNewsList cards={cardsNews}/>
 			</section>
 		</main>
     </div>

@@ -17,7 +17,7 @@ const Card = ({ title, button_title, link }) => {
 
     return (
         <div style={{backgroundColor: color.bg}} className={styles.container}>
-            <h3 className={styles.title}>{title}</h3>
+            <h2 className={styles.title}>{title}</h2>
             <Link href={link}>
                 <a style={{border: `2px solid ${color.border}`}} className={styles.button}>{button_title}</a>
             </Link>
