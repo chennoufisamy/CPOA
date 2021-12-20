@@ -11,6 +11,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .title {
@@ -57,7 +58,7 @@
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
-    color: var(--text-2cd-color)
+    color: var(--text-2nd-color)
 }
 
 .read_more {

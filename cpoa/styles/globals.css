@@ -5,10 +5,10 @@
 
 :root {
 	--text-main-color: black;
-	--text-2cd-color: rgba(0,0,0,.5);
+	--text-2nd-color: #7f7f7f;
 	--text-3rd-color: #C41E3A;
 	--bg-main-color: white;
-	--bg-scd-color: #acacac
+	--bg-scd-color: #151515;
 }
 
 html,
@@ -23,6 +23,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+ul {
+	list-style: none;
 }
 
 input, button, textarea {
@@ -64,4 +68,31 @@ header {
 	padding: 1rem;
 	font-size: 1.2rem;
 	text-transform: uppercase;
+}
+
+footer {
+	width: 100%;
+	padding: 1rem 4rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--bg-scd-color);
+}
+
+.text-footer {
+	color: var(--text-2nd-color);
+}
+
+.text-footer > span {
+	color: #333333;
+}
+
+.container-social-media {
+	display: flex;
+	color: white;
+}
+
+.container-social-media > li {
+	margin: 0 1rem;
+	font-size: 1.5rem;
 }

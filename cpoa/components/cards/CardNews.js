@@ -13,7 +13,6 @@ const CardNews = ({ image, title, text, link }) => {
                 <Link href={link}>
                     <a className={styles.read_more}>lire plus</a>
                 </Link>
-                
             </div>
         </div>
     )
