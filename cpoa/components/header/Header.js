@@ -1,4 +1,3 @@
-import Hamburger from "../hamburger/Hamburger";
 import Navbar from "../navbar/navbar";
 
 const Header = () => {
@@ -6,19 +5,29 @@ const Header = () => {
     const navLinks = {
 		home: {name: "accueil", ref: "/"},
         news: {name: "actualité", ref: "/news"},
-        ticketing: {name: "billetterie", ref: "ticketing"}
+        ticketing: {name: "billetterie", ref: "/ticketing"},
+        login: {name: "se connecter", ref: "/login"},
+        register: {name: "créer un compte", ref: "/register"}
 	};
 
-	const navBar = [
+	const mainNavBar = [
 		navLinks.home,
 		navLinks.news,
         navLinks.ticketing
 	];
 
+    const connectionNav = [
+        navLinks.login,
+        navLinks.register
+    ]
+
     return (
         <header>
-            <Navbar links={navBar}/>
-            <Hamburger />
+            <Navbar links={mainNavBar}/>
+            <div className="container-connection-nav">
+                <Navbar links={connectionNav}/>
+            </div>
+            
         </header>
     )
 }

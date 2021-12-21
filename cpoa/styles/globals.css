@@ -63,6 +63,24 @@ header {
 	align-items: center;
 }
 
+.container-connection-nav {
+	right: 0;
+    position: absolute;
+    padding: .5rem;
+    margin-right: 2rem;
+}
+
+.container-connection-nav > .nav-header > .link-header {
+	margin: 0;
+	text-transform: lowercase;
+	font-size: 1rem;
+	color: var(--text-2nd-color)
+}
+
+.container-connection-nav > .nav-header > .link-header:hover {
+	color: var(--text-main-color)
+}
+
 .link-header {
 	margin: 0 1rem;
 	padding: 1rem;

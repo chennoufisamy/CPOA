@@ -12,6 +12,11 @@
     justify-content: center;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: 200ms;
+}
+
+.container:hover {
+    transform: scale(1.05);
 }
 
 .title {
@@ -40,6 +45,11 @@
     max-width: 400px;
     max-height: 500px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: 200ms;
+}
+
+.container_news:hover {
+    transform: scale(1.05);
 }
 
 .container_news_info {
