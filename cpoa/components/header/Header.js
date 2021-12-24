@@ -3,9 +3,9 @@ import Navbar from "../navbar/navbar";
 const Header = () => {
 
     const navLinks = {
-		home: {name: "accueil", ref: "/"},
-        news: {name: "actualité", ref: "/news"},
-        ticketing: {name: "billetterie", ref: "/ticketing"},
+		home: {name: "accueil", ref: "#home"},
+        news: {name: "actualité", ref: "#news"},
+        ticketing: {name: "billetterie", ref: "#tickets"},
         login: {name: "se connecter", ref: "/login"},
         register: {name: "créer un compte", ref: "/register"}
 	};

@@ -75,7 +75,7 @@ export default function Home() {
 				<CardNewsList cards={cardsNews}/>
 			</section>
 
-			<section className={styles.section_ticketing} id="ticketing">
+			<section className={styles.section_ticketing} id="tickets">
 				<div className={styles.container_title}>
 					<h1 className={styles.main_title}>billetterie</h1>
 				</div>

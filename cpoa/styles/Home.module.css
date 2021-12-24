@@ -22,7 +22,9 @@
 
 .section_home {
 	width: 100%;
-	height: 100vh;
+	margin-bottom: 5rem;
+	padding-top: 5rem;
+	/*height: 100vh;*/
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -31,6 +33,7 @@
 
 .section_news{
 	margin-bottom: 5rem;
+	padding-top: 5rem;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -39,7 +42,8 @@
 }
 
 .section_ticketing {
-	margin: 5rem 0;
+	margin-bottom: 5rem;
+	padding-top: 5rem;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
