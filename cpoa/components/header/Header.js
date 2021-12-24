@@ -1,11 +1,11 @@
 import Navbar from "../navbar/navbar";
 
-const Header = () => {
+const Header = ({ refs }) => {
 
     const navLinks = {
-		home: {name: "accueil", ref: "#home"},
-        news: {name: "actualité", ref: "#news"},
-        ticketing: {name: "billetterie", ref: "#tickets"},
+		home: {name: "accueil", ref: typeof refs != "undefined" ? "#home" : "/"},
+        news: {name: "actualité", ref: typeof refs != "undefined" ? "#news" : "/news"},
+        ticketing: {name: "billetterie", ref: typeof refs != "undefined" ? "#tickets" : "/ticketing"},
         login: {name: "se connecter", ref: "/login"},
         register: {name: "créer un compte", ref: "/register"}
 	};

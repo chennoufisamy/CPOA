@@ -44,6 +44,12 @@ export default function Home() {
 		cardsTicketInfos.ticket5
 	]
 
+	const refsHeader = {
+		home: "#home",
+		news: "#news",
+		tickets: "#tickets"
+	}
+
   return (
     <div className={styles.container}>
 		<Head>
@@ -54,7 +60,7 @@ export default function Home() {
 		</Head>
 
       	<main className={styles.main}>
-		  	<Header />
+		  	<Header refs={refsHeader} />
 		    <div className={styles.container_img_header}>
 				<img className={styles.img_header} src="/images/bgheader.jpg" />
 				<img className={styles.logo} src="/images/logo.png" />
