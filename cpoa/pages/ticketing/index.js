@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
-import styles from "../../styles/Tickets.module.css"
+import styles from "../../styles/Ticketing.module.css";
+import TicketsList from "../../components/cards/TicketsList"
 
-export default function TicketPage() {
+export default function Ticketing() {
     return (
         <div className={styles.container}>
 		<Head>
@@ -15,6 +16,12 @@ export default function TicketPage() {
 
       	<main className={styles.main}>
 		  	<Header />
+			  <section className={styles.section_ticketing} id="tickets">
+				<div className={styles.container_title}>
+					<h1 className={styles.main_title}>billetterie</h1>
+				</div>
+				<TicketsList />
+			</section>
 		</main>
 		<Footer />
     </div>

@@ -4,7 +4,7 @@ import FormRegister from "../../components/form/FormRegister";
 import Header from "../../components/header/header";
 import styles from "../../styles/Register.module.css"
 
-export default function Login() {
+export default function Register() {
     return (
         <div className={styles.container}>
 		<Head>

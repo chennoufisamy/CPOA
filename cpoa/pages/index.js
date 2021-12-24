@@ -17,14 +17,6 @@ export default function Home() {
 		news1: {image: "/images/news1.jpg", title: "Les dates de l'édition 2022 sont connues!", text:"L'Open Parc Auvergne-Rhône-Alpes est qualifié comme 'un des plus beaux tournois ATP 250, après avoir connu quatre premières éditions de très haut niveau en accueillant un plateau de joueurs internationaux extrêmement relevé comme par exemple : Stefanos TSITSIPAS, Jo-Wilfried TSONGA, Dominic THIEM, Gaël MONFILS, Juan Martin DEL POTRO, Milos RAONIC, Nick KYRGIOS, Denis SHAPOVALOV, Richard GASQUET, Felix AUGER-ALIASSIME …", link: "/news"}
 	}
 
-	const cardsTicketInfos = {
-		ticket1: {title: "Billets grand public", button_title: "Acheter", link: "/tickets", type: 1},
-		ticket2: {title: "Billets licenciés", button_title: "Acheter", link: "/tickets", type: 2},
-		ticket3: {title: "Billets court annexe", button_title: "Acheter", link: "/tickets", type: 3},
-		ticket4: {title: "Billets journée de la solidarité", button_title: "Acheter", link: "/tickets", type: 4},
-		ticket5: {title: "Billets \"the big match\"", button_title: "Acheter", link: "/tickets", type: 5}
-	}
-
 	const cardsHome = [
 		cardsHomeInfos.program,
 		cardsHomeInfos.players
@@ -34,14 +26,6 @@ export default function Home() {
 		cardsNewsInfos.news1,
 		cardsNewsInfos.news1,
 		cardsNewsInfos.news1
-	]
-
-	const cardsTicket = [
-		cardsTicketInfos.ticket1,
-		cardsTicketInfos.ticket2,
-		cardsTicketInfos.ticket3,
-		cardsTicketInfos.ticket4,
-		cardsTicketInfos.ticket5
 	]
 
 	const refsHeader = {
@@ -85,7 +69,7 @@ export default function Home() {
 				<div className={styles.container_title}>
 					<h1 className={styles.main_title}>billetterie</h1>
 				</div>
-				<TicketsList tickets={cardsTicket} />
+				<TicketsList />
 			</section>
 			<Footer />
 		</main>

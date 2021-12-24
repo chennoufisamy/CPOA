@@ -27,7 +27,6 @@ const Header = ({ refs }) => {
             <div className="container-connection-nav">
                 <Navbar links={connectionNav}/>
             </div>
-            
         </header>
     )
 }
