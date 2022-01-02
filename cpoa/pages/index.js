@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import CardsList from "../components/cards/CardsList";
 import CardNewsList from "../components/cards/CardsNewsList";
 import TicketsList from "../components/cards/TicketsList";
@@ -67,7 +68,9 @@ export default function Home() {
 
 			<section className={styles.section_ticketing} id="tickets">
 				<div className={styles.container_title}>
-					<h1 className={styles.main_title}>billetterie</h1>
+					<Link href="/ticketing">
+						<a><h1 className={styles.main_title}>billetterie</h1></a>
+					</Link>
 				</div>
 				<TicketsList />
 			</section>

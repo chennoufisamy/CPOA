@@ -1,0 +1,59 @@
+.form {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+
+.container_east {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    width: 100px;
+    background-color: red;
+}
+
+.container_west {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 500px;
+}
+
+.container_blue{
+    display: block;
+}
+
+.checkbox_blue {
+    position: absolute;
+    opacity: 0;
+    height: 1rem;
+    width: 1rem;
+}
+
+.blue_sits {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background-color: #298BEC;
+    border-radius: 50%;
+}
+
+.container_gray{
+    display: block;
+}
+
+.checkbox_gray {
+    position: absolute;
+    opacity: 0;
+    height: 1rem;
+    width: 1rem;
+}
+
+.gray_sits {
+    position: absolute;
+    width: 1rem;
+    height: 500px;
+    background-color: #afafaf;
+    border-radius: 0;
+}
