@@ -1,5 +1,6 @@
 import Form from "../form/Form";
-import { useState } from 'react'
+import { useState } from 'react';
+import { sha512 } from 'js-sha512';
 
 const FormRegister = () => {
 
@@ -24,7 +25,10 @@ const FormRegister = () => {
     ];
 
     const log_user = () => {
-        console.log("registered")
+        Object.keys(formData).map((key) => {
+            formData[key] = sha512(formData[key])
+        })
+        console.log(formData)
     };
 
     const onSubmit = (e) => {
