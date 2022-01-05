@@ -16,10 +16,6 @@
     color: var(--text-main-color)
 }
 
-.input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-}
-
 .input::file-selector-button {
     display: none;
 }
@@ -35,6 +31,7 @@
     background-color: var(--bg-3rd-color);
     color: var(--text-main-color);
     text-transform: capitalize;
+    border: none;
 }
 
 .select:focus {

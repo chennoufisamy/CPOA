@@ -2,15 +2,9 @@ import Head from "next/head";
 import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
 import styles from "../../styles/Ticketing.module.css";
-import { useRouter } from 'next/router';
 import Places from "../../components/places/Places";
 
 export default function() {
-
-    const router = useRouter();
-    const { id } = router.query
-
-    
 
     return (
         <div className={styles.container}>

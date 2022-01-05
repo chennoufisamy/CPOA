@@ -9,6 +9,7 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
 	//<a href="http://www.onlinewebfonts.com">oNline Web Fonts</a>
+	
 	const cardsHomeInfos = {
 		program: {title: "programme", button_title: "en savoir plus", link: "/program"},
 		players: {title: "les joueurs", button_title: "en savoir plus", link: "/players"}
