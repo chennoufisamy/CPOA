@@ -6,7 +6,8 @@ const handler = async (req, res) => {
 		`
 			INSERT INTO user (first_name, last_name, date_of_birth, email, password) VALUES (?, ?, ?, ?, ?)
 		`,
-			[req.query.fn, req.query.ln, req.query.dob, req.query.em, req.query.pa]
+			//[req.query.fn, req.query.ln, req.query.dob, req.query.em, req.query.pa]
+			req.body.content
 		);
     	return res.json(results);
   	} catch (e) {

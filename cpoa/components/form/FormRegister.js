@@ -1,7 +1,7 @@
 import Form from "../form/Form";
 import { useState } from 'react';
 import { sha512 } from 'js-sha512';
-//import axios from 'axios';
+import axios from 'axios';
 
 const FormRegister = () => {
 
@@ -28,7 +28,8 @@ const FormRegister = () => {
     ];
     //
     const add_user = async () => {
-        const response = await fetch(url);
+        let data = {content: [formData['firstname'], formData['lastname'], formData['dob'], formData['email'], formData['password']]}
+        axios.post("http://localhost:3000/api/register", data)
     }
 
     const register_user = () => {

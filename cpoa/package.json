@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^1.7.0",
     "axios": "^0.24.0",
     "fs": "0.0.1-security",
     "js-sha512": "^0.8.0",
