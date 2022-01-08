@@ -39,6 +39,22 @@ const Form = ({
                         handleChange={handleChange}
                         placeholder={f.placeholder}
                         required={f.required} />
+                } else if (f.type === "checkbox") {
+                    return (
+                        <div className={styles.container_ckeckbox}>
+                            <label for={f.name}>{f.placeholder}</label>
+                            <Input
+                                key={f.name}
+                                type={f.type}
+                                name={f.name}
+                                id={f.id}
+                                text={f.text}
+                                handleChange={handleChange}
+                                placeholder={f.placeholder}
+                                required={f.required}
+                            />
+                        </div>
+                    )
                 }
                 return <Input
                     key={f.name}

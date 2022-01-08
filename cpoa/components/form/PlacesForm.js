@@ -24,13 +24,15 @@ const FormLogin = () => {
     const fields = {
         quantity: {type: "number", name: "quantity", text: "quantity", placeholder: "quantité", required: true},
         places: {type: "text", name: "places", text: "places", placeholder: "places", required: true},
-        matchs: {type: "select", name: "matchs", select: selectMatchs, required: true}
+        matchs: {type: "select", name: "matchs", select: selectMatchs, required: true},
+        age: {type: "checkbox", name: "age", text: "age", placeholder: "Moins de 12 ans?", required: false}
     };
 
     const formLogin = [
         fields.matchs,
         fields.quantity,
-        fields.places
+        fields.places,
+        fields.age
     ];
 
     const compute_price = (cat) => {
@@ -41,7 +43,7 @@ const FormLogin = () => {
 
     const pay = () => {
         if (Object.keys(formData).length == 3) {
-            formData['places'] = formData['places'].split(" ")
+            formData['places'] = formData['places'].replace(/[\W_]+/g," ").split(" ")
             console.log(formData)
             if (formData['quantity'] == formData['places'].length) {
                 Router.push('/payement');

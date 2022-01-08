@@ -63,3 +63,17 @@
 .input:focus, .textarea:focus, .button:focus {
     border: 1px solid var(--border-color);
 }
+
+.container_ckeckbox {
+    display: flex;
+    align-items: center;
+}
+
+.container_ckeckbox > label {
+    margin-right: 1rem;
+}
+
+.input[type="checkbox"] {
+    height: 1.2rem;
+    width: 1.2rem;
+}

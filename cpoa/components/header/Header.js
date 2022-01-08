@@ -3,7 +3,7 @@ import { useUser } from "@auth0/nextjs-auth0";
 
 const Header = ({ refs }) => {
 
-    const { user, isLoading } = useUser();
+    const { user } = useUser();
 
     const navLinks = {
 		home: {name: "accueil", ref: typeof refs != "undefined" ? "#home" : "/"},

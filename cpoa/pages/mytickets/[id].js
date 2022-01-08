@@ -1,14 +1,9 @@
 import Head from "next/head";
 import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
-import styles from "../../styles/Ticketing.module.css";
-import Places from "../../components/places/Places";
-import { useUser } from "@auth0/nextjs-auth0";
-import Router from 'next/router';
+import styles from "../../styles/MyTickets.module.css";
 
 export default function() {
-
-    const { user } = useUser();
 
     return (
         <div className={styles.container}>
@@ -21,17 +16,7 @@ export default function() {
 
             <main className={styles.main}>
                 <Header />
-                {!user ? 
-                    <div>
-                        <h1>Vous devez être connecté</h1>
-                        {Router.push("/api/auth/login")}
-                    </div>
-                    :
-                    <>
-                        <Places />
-                    </>
-                    
-                }
+                <h1>My tickets</h1>
             </main>
             <Footer />
         </div>
