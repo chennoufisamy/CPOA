@@ -1,7 +1,7 @@
 import styles from './places.module.css';
 import PlacesForm from '../form/PlacesForm';
 
-const Places = ({ t }) => {
+const Places = () => {
     
     const blueSits = (s, n) => {
         let sits_list = []

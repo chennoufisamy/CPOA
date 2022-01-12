@@ -22,9 +22,7 @@ const Header = ({ refs }) => {
 	];
 
     const connectionNav = [
-        navLinks.login,
-        //navLinks.register
-        //navLinks.logout
+        navLinks.login
     ]
 
     const connectedNav = [

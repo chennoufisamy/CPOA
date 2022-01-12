@@ -6,7 +6,7 @@ const FormTicket = () => {
     const [formData, setFormData] = useState({});
 
     const fields = {
-        quantity: {type: "number", name: "quantity", text: "quantity", placeholder: "auntité", required: true}
+        quantity: {type: "number", name: "quantity", text: "quantity", placeholder: "quntité", required: true}
     };
 
     const formTicket = [

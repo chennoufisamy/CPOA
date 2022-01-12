@@ -118,3 +118,35 @@ footer {
 	margin: 0 1rem;
 	font-size: 1.5rem;
 }
+
+@media screen and (max-width: 1050px) {
+	header {
+		justify-content: space-between;
+	}
+
+	.nav-header {
+		width: auto;
+		padding-left: 2rem;
+	}
+}
+
+@media screen and (max-width: 810px) {
+	header {
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.nav-header {
+		padding: 0;
+	}
+
+	.nav-header > .link-header {
+		padding: .5rem;
+	}
+
+	.container-connection-nav {
+		position: relative;
+		padding: 0;
+		margin-right: 0;
+	}
+}

@@ -24,7 +24,6 @@ export default function() {
                 {!user ? 
                     <div>
                         <h1>Vous devez être connecté</h1>
-                        {Router.push("/api/auth/login")}
                     </div>
                     :
                     <>
