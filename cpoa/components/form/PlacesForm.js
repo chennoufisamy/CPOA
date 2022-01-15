@@ -129,8 +129,6 @@ const FormPlaces = ({ matchs1 }) => {
                 let user_id = user.sub.split('|')[1];
                 let place = formData['places']
                 let price = default_price("monday", get_cat(place));
-                console.log("price " + price)
-                console.log("form " + formData)
                 let type = ticket_type();
                 let data = {content: [user_id, i, place, price, type]}
                 console.log("data " + data)
@@ -153,7 +151,6 @@ const FormPlaces = ({ matchs1 }) => {
         e.preventDefault();
         pay()
         redirect();
-        
     };
 
     return (

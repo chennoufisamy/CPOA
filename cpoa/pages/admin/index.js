@@ -1,9 +1,11 @@
 import Head from "next/head";
 import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
-import styles from "../../styles/Add_player.module.css";
+import styles from "../../styles/Admin.module.css";
 import FormPlayer from "../../components/form/FormPlayer";
 import FormTeam from "../../components/form/FormTeam";
+import FormMatchSimple from "../../components/form/FormMatchSimple";
+import FormMatchDouble from "../../components/form/FormMatchDouble";
 
 export default function Login() {
     return (
@@ -20,6 +22,8 @@ export default function Login() {
 				<div className={styles.container_form}>
 					<FormPlayer />
 					<FormTeam />
+					<FormMatchSimple />
+					<FormMatchDouble />
 				</div>
 		</main>
         <Footer />
