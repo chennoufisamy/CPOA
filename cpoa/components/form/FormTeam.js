@@ -1,16 +1,10 @@
 import Form from "../form/Form";
 import { useState } from 'react';
-import countries from "../../coutries.json";
 import axios from "axios";
 
 const FormTeam = () => {
 
     const [formData, setFormData] = useState({});
-
-    const countriesList = [];
-    for (const [key, value] of Object.entries(countries)) {
-        countriesList.push({value: key, text: value})
-    };
 
     const fields = {
         id1: {type: "number", name: "id1", text: "id1", placeholder: "n° du joueur 1", required: true},

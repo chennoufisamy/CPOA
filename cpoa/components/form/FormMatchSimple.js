@@ -1,7 +1,15 @@
 import { useState } from 'react';
 import Form from "../form/Form";
 
-const FormMatchSimple = () => {
+export const getStaticProps = async () => {
+	const res = await fetch("http://localhost:3000/api/players");
+	const data = await res.json();
+	return {
+	  props: { players: data }
+	}
+}
+
+const FormMatchSimple = ({ players }) => {
 
     const [formData, setFormData] = useState({});
 
@@ -11,8 +19,6 @@ const FormMatchSimple = () => {
         slave_team: {type: "number", name: "slave", text: "slave", placeholder: "n° équipe ramasseur", required: true},
         day: {type: "text", name: "day", text: "day", placeholder: "jour", required: true},
         court: {type: "number", name: "court", text: "court", placeholder: "n° du court", required: true},
-        id1: {type: "number", name: "id1", text: "id1", placeholder: "n° du joueur 1", required: true},
-        id2: {type: "number", name: "id2", text: "id2", placeholder: "n° du joueur 2", required: true}
     };
 
     const formMatchSimple = [
@@ -20,15 +26,13 @@ const FormMatchSimple = () => {
         fields.referee_team,
         fields.slave_team,
         fields.day,
-        fields.court,
-        fields.id1,
-        fields.id2
+        fields.court
     ];
 
     const add = () => {
-        /*let data = {content: [formData['firstname'], formData['lastname'], formData['country']]}
-        axios.post("http://localhost:3000/api/add_player", data);
-        alert("Joueur ajouté");*/
+        let data = {content: [formData['firstname'], formData['lastname'], formData['country']]}
+        axios.post("http://localhost:3000/api/add_match", data);
+        alert("Joueur ajouté");
     };
 
     const onSubmit = (e) => {

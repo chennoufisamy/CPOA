@@ -10,6 +10,7 @@ const PlayersList = ({ players }) => {
 				<p>{p.country}</p>
 			</li>
 		))}
+		{console.log(players)}
     	</ul>
   	);
 };
