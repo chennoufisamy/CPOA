@@ -3,13 +3,14 @@ import Input from './Input';
 import Option from './Option';
 import styles from './form.module.css'
 import ButtonForm from './ButtonForm';
+import axios from 'axios';
 
 const FormMatchSimple = ({ players }) => {
 
     const [formData, setFormData] = useState({});
 
     const fields = {
-        datetime: {type: "datetime-local", name: "datetime", text: "datetime", placeholder: "date et heure", required: true},
+        datetime: {type: "date", name: "datetime", text: "datetime", placeholder: "date et heure", required: true},
         referee_team: {type: "number", name: "referee", text: "referee", placeholder: "n° équipe arbitre", required: true},
         slave_team: {type: "number", name: "slave", text: "slave", placeholder: "n° équipe ramasseur", required: true},
         day: {type: "text", name: "day", text: "day", placeholder: "jour", required: true},
@@ -31,14 +32,16 @@ const FormMatchSimple = ({ players }) => {
     };
 
     const add = () => {
-        let data = {content: [formData['firstname'], formData['lastname'], formData['country']]}
-        axios.post("http://localhost:3000/api/add_match", data);
-        alert("Joueur ajouté");
+        let data = {content: [formData['datetime'], formData['referee'], formData['slave'], formData['day'], formData['court']]}
+        let data_simple = {content: [formData['p1'], formData['p2']]}
+        //axios.post("http://localhost:3000/api/add_match", data);
+        axios.post("http://localhost:3000/api/add_match", data_simple);
+        alert("Match ajouté");
     };
 
     const onSubmit = (e) => {
         e.preventDefault();
-        //add();
+        add();
         console.log(formData)
     };
 
