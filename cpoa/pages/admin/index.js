@@ -4,9 +4,16 @@ import Header from "../../components/header/header";
 import styles from "../../styles/Admin.module.css";
 import FormMatchSimple from "../../components/form/FormMatchSimple";
 import FormMatchDouble from "../../components/form/FormMatchDouble";
-import FormTeamReferee from "../../components/form/FormRefereeTeam";
 
-export default function Login({players}) {
+export const getStaticProps = async () => {
+	const res = await fetch("http://localhost:3000/api/players");
+	const data = await res.json();
+	return {
+	  props: { players: data }
+	}
+}
+
+export default function Admin({players}) {
     return (
         <div className={styles.container}>
 		<Head>
@@ -19,7 +26,7 @@ export default function Login({players}) {
       	<main className={styles.main}>
 		  	<Header />
 				<div className={styles.container_form}>
-					<FormMatchSimple />
+					<FormMatchSimple players={players}/>
 					<FormMatchDouble />
 				</div>
 				

@@ -1,13 +1,8 @@
 import { useState } from 'react';
-import Form from "../form/Form";
-
-export const getStaticProps = async () => {
-	const res = await fetch("http://localhost:3000/api/players");
-	const data = await res.json();
-	return {
-	  props: { players: data }
-	}
-}
+import Input from './Input';
+import Option from './Option';
+import styles from './form.module.css'
+import ButtonForm from './ButtonForm';
 
 const FormMatchSimple = ({ players }) => {
 
@@ -29,6 +24,12 @@ const FormMatchSimple = ({ players }) => {
         fields.court
     ];
 
+    const handleChange = event => {
+        const formDataCopy = { ...formData };
+        formDataCopy[event.target.name] = event.target.value;
+        setFormData(formDataCopy);
+    };
+
     const add = () => {
         let data = {content: [formData['firstname'], formData['lastname'], formData['country']]}
         axios.post("http://localhost:3000/api/add_match", data);
@@ -37,19 +38,55 @@ const FormMatchSimple = ({ players }) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        add();
+        //add();
+        console.log(formData)
     };
 
     return (
-        <Form
-            onSubmit={onSubmit}
-            formTitle="Ajouter un match simple"
-            setFormData={setFormData}
-            formStructure={formMatchSimple}
-            formData={formData}
-            buttonText="Ajouter"
-        />
+        <form className={styles.form} onSubmit={onSubmit}>
+            <h2 className={styles.title}>Ajouter un match simple</h2>
+            {formMatchSimple.map(m => (
+                <Input
+                key={m.name}
+                type={m.type}
+                name={m.name}
+                id={m.name}
+                text={m.text}
+                handleChange={handleChange}
+                placeholder={m.placeholder}
+                required={m.required}
+                />
+            ))}
+            <select 
+            className={styles.select}
+            name={"p1"}
+            value={formData['p1']}
+            onChange={handleChange}>
+                {players.map((p) => (
+                    <Option 
+                    key={p.id}
+                    value={p.id}
+                    text={`${p.id} - ${p.first_name} - ${p.last_name}`}
+                    />
+                ))}
+            </select>
+            <select 
+            className={styles.select}
+            name={"p2"}
+            value={formData['p2']}
+            onChange={handleChange}>
+                {players.map((p) => (
+                    <Option 
+                    key={p.id}
+                    value={p.id}
+                    text={`${p.id} - ${p.first_name} - ${p.last_name}`}
+                    />
+                ))}
+            </select>
+            <ButtonForm buttonType='primary' text={"ajouter"} />
+        </form>
     )
 }
+
 
 export default FormMatchSimple;
