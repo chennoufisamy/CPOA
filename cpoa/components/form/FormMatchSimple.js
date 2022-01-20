@@ -4,7 +4,6 @@ import Option from './Option';
 import styles from './form.module.css'
 import ButtonForm from './ButtonForm';
 import axios from 'axios';
-import crypto from 'crypto';
 
 const FormMatchSimple = ({ players }) => {
 
@@ -12,12 +11,10 @@ const FormMatchSimple = ({ players }) => {
 
     const fields = {
         datetime: {type: "time", name: "datetime", text: "datetime", placeholder: "date et heure", required: true},
-        /*day: {type: "text", name: "day", text: "day", placeholder: "jour", required: true},*/
         court: {type: "number", name: "court", text: "court", placeholder: "n° du court", required: true},
     };
 
     const formMatchSimple = [
-        fields.datetime,
         fields.court
     ];
 
@@ -31,6 +28,13 @@ const FormMatchSimple = ({ players }) => {
         {text: "samedi", value: "saturday"}
     ]
 
+    const schedule = [
+        {text: "matinée", value: "10:00:00"},
+        {text: "midi", value: "12:00:00"},
+        {text: "après-midi", value: "14:00:00"},
+        {text: "soirée", value: "16:00:00"}
+    ]
+
     const handleChange = event => {
         const formDataCopy = { ...formData };
         formDataCopy[event.target.name] = event.target.value;
@@ -38,6 +42,10 @@ const FormMatchSimple = ({ players }) => {
     };
 
     const is_valid = async () => {
+        if (formData['court'] < 1) {
+            alert("Numéro du court invalide");
+            return false;
+        }
         if (formData['p1'].split(" ")[0] != formData['p2'].split(" ")[0]) {
             let matchs = await fetch("http://localhost:3000/api/date_by_court");
             matchs = await matchs.json();
@@ -45,8 +53,8 @@ const FormMatchSimple = ({ players }) => {
                 for(const m of matchs) {
                     if (m['court_id'] == formData['court'] && m['day'] == formData['day']) {
                         let date_m = parseInt(m['date'].split(':').join(''))
-                        let date = parseInt(`${formData['datetime']}:00`.split(':').join(''))
-                        if (date+10000 < date_m || date > date_m+10000) {
+                        let date = parseInt(formData['datetime'].split(':').join(''))
+                        if (date+20000 < date_m || date > date_m+20000) {
                             return true;
                         } else {
                             alert("Horraire invalide");
@@ -76,20 +84,13 @@ const FormMatchSimple = ({ players }) => {
                 content: [match_id, formData['p1'].split(" ")[0], formData['p2'].split(" ")[0]], 
                 bonus: [formData['p1'].split(" ")[1], formData['p2'].split(" ")[1]]
             }
-            console.log(data_simple);
             axios.post("http://localhost:3000/api/add_match_simple", data_simple);
             
             let data = {
-                content: [match_id, formData['datetime'] +":00", formData['day'], formData['court']]
+                content: [match_id, formData['datetime'], formData['day'], formData['court']]
             }
-            console.log(data);
             axios.post("http://localhost:3000/api/add_match", data);
-            console.log(typeof match_id)
-            
-            
             alert("Match ajouté");
-        } else {
-            alert("Erreur lors de l'ajout du match")
         }
     };
 
@@ -113,6 +114,19 @@ const FormMatchSimple = ({ players }) => {
                 required={m.required}
                 />
             ))}
+            <select 
+            className={styles.select}
+            name={"datetime"}
+            value={formData['datetime']}
+            onChange={handleChange}>
+                {schedule.map((p) => (
+                    <Option 
+                    key={p.value}
+                    value={p.value}
+                    text={p.text}
+                    />
+                ))}
+            </select>
             <select 
             className={styles.select}
             name={"day"}

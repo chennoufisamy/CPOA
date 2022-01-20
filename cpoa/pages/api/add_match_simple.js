@@ -13,8 +13,4 @@ const handler = async (req, res) => {
     	res.status(500).json({ message: e.message });
   	}
 };
-
-//`SELECT id FROM referee WHERE country <> ${req.body.bonus[0]} AND country <> ${req.body.bonus[1]} AND category = 'ITT1`
-
-//(SELECT rt.id FROM refere_team rt JOIN referee r ON rt.main_referee = r.id WHERE rt.country <> ${req.body.bonus[0]} AND rt.country <> ${req.body.bonus[1]})
 export default handler;

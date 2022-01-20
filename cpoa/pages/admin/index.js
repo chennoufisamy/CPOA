@@ -6,14 +6,18 @@ import FormMatchSimple from "../../components/form/FormMatchSimple";
 import FormMatchDouble from "../../components/form/FormMatchDouble";
 
 export const getStaticProps = async () => {
-	const res = await fetch("http://localhost:3000/api/players");
-	const data = await res.json();
+	const res_p = await fetch("http://localhost:3000/api/players");
+	const data_p = await res_p.json();
+
+	const res_t = await fetch("http://localhost:3000/api/teams");
+	const data_t = await res_t.json();
+
 	return {
-	  props: { players: data }
+	  props: { players: data_p, teams: data_t }
 	}
 }
 
-export default function Admin({players}) {
+export default function Admin({players, teams}) {
     return (
         <div className={styles.container}>
 		<Head>
@@ -27,9 +31,8 @@ export default function Admin({players}) {
 		  	<Header />
 				<div className={styles.container_form}>
 					<FormMatchSimple players={players}/>
-					<FormMatchDouble />
+					<FormMatchDouble teams={teams}/>
 				</div>
-				
 		</main>
         <Footer />
     </div>
