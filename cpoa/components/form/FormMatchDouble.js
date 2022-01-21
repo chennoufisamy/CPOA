@@ -54,7 +54,7 @@ const FormMatchDouble = ({ teams }) => {
                     if (m['court_id'] == formData['court'] && m['day'] == formData['day']) {
                         let date_m = parseInt(m['date'].split(':').join(''))
                         let date = parseInt(formData['datetime'].split(':').join(''))
-                        if (date+20000 < date_m || date > date_m+20000) {
+                        if (date != date_m) {
                             return true;
                         } else {
                             alert("Horraire invalide");
@@ -93,6 +93,7 @@ const FormMatchDouble = ({ teams }) => {
             axios.post("http://localhost:3000/api/add_match", data);
             alert("Match ajouté");
         }
+        console.log(formData)
     };
 
     const onSubmit = (e) => {
