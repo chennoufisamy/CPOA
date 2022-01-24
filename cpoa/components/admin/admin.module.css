@@ -1,0 +1,95 @@
+.container {
+    width: 100%;
+}
+
+.match {
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.match_form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 1.5rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.input {
+    margin: 0.5rem 0 0.5rem 0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--bg-3rd-color);
+    color: var(--text-main-color)
+}
+
+.input::file-selector-button {
+    display: none;
+}
+
+.input[type="file"]:hover {
+    cursor: pointer;
+}
+
+.select {
+    margin: 0.5rem 0 0.5rem 0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--bg-3rd-color);
+    color: var(--text-main-color);
+    text-transform: capitalize;
+    border: none;
+}
+
+.select:focus {
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.textarea {
+    margin: 0.5rem 0 0.5rem 0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--bg-3rd-color);
+    color: var(--text-main-color);
+}
+
+.button {
+    margin-top: 0.5rem;
+    padding: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 0.5rem;
+    background-color: var(--bg-3rd-color);
+    color: var(--text-main-color);
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.input:focus, .textarea:focus, .button:focus {
+    border: 1px solid var(--border-color);
+}
+
+.container_ckeckbox {
+    display: flex;
+    align-items: center;
+}
+
+.container_ckeckbox > label {
+    margin-right: 1rem;
+}
+
+.input[type="checkbox"] {
+    height: 1.2rem;
+    width: 1.2rem;
+}

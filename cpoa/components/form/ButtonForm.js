@@ -1,9 +1,9 @@
 import styles from './form.module.css'
 
-const ButtonForm = ({ text, clicked, buttonType }) => {
+const ButtonForm = ({ text, clicked, buttonType, name=null }) => {
 	return (
 		<div>
-			<button onClick={clicked} className={styles.button}>{text}</button>
+			<button name={name} onClick={clicked} className={styles.button}>{text}</button>
 		</div>
 	);
 };

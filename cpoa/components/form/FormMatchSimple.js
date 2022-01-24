@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Input from './Input';
 import Option from './Option';
 import styles from './form.module.css'
 import ButtonForm from './ButtonForm';
