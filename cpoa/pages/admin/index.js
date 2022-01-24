@@ -4,6 +4,8 @@ import Header from "../../components/header/header";
 import styles from "../../styles/Admin.module.css";
 import FormMatchSimple from "../../components/form/FormMatchSimple";
 import FormMatchDouble from "../../components/form/FormMatchDouble";
+import { useUser } from "@auth0/nextjs-auth0";
+import Router from "next/router";
 
 export const getStaticProps = async () => {
 	const res_p = await fetch("http://localhost:3000/api/players");
@@ -15,9 +17,16 @@ export const getStaticProps = async () => {
 	return {
 	  props: { players: data_p, teams: data_t }
 	}
-}
+};
 
-export default function Admin({players, teams}) {
+export default function Admin({ players, teams }) {
+
+	const { user } = useUser();
+
+	const redirect = () => {
+		Router.push('/')
+	}
+
     return (
         <div className={styles.container}>
 		<Head>
@@ -29,10 +38,13 @@ export default function Admin({players, teams}) {
 
       	<main className={styles.main}>
 		  	<Header />
+				{user ? user.sub == "auth0|61eebdb78b42c000762b4930" ?
 				<div className={styles.container_form}>
 					<FormMatchSimple players={players}/>
 					<FormMatchDouble teams={teams}/>
-				</div>
+				</div> : 
+				redirect() : 
+				<p>Vous devez être connecté</p>}
 		</main>
         <Footer />
     </div>

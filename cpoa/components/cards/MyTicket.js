@@ -1,22 +1,6 @@
 import styles from "./Card.module.css";
-import { useUser } from "@auth0/nextjs-auth0";
-import { useState, useEffect } from "react";
 
-const Myticket = () => {
-
-    const { user } = useUser();
-    //const [userId, setUserId] = useState([]);
-    const [tickets, setTickets] = useState([]);
-
-    useEffect(() => {
-        async function get_tickets() {
-            const id = user.sub.split('|')[1];
-            const res = await fetch("http://localhost:3000/api/ticket_by_user?id="+id);
-            const data = await res.json();
-            setTickets(data);
-        }
-        get_tickets();
-    }, []);
+const Myticket = ({ tickets }) => {
 
     const get_ticket_name = (type) => {
         switch(type) {

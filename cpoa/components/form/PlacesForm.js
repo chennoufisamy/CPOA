@@ -139,22 +139,11 @@ const FormPlaces = () => {
         return false;
     }
 
-    const redirect = () => {
-        if (Object.keys(formData).length >= 3) {
-            formData['places'] = formData['places'].replace(/[\W_]+/g," ").split(" ")
-            console.log(formData)
-            if (formData['quantity'] == formData['places'].length) {
-                Router.push('/payement');
-            }
-        }
-    };
-
     const onSubmit = async (e) => {
         e.preventDefault();
         if (await pay()) {
-            //Router.push('/payement');
+            Router.push('/payement');
         }
-        //redirect();
     };
 
     

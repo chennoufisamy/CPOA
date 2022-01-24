@@ -1,6 +1,5 @@
 import styles from './places.module.css';
 import PlacesForm from '../form/PlacesForm';
-import {image} from "../../public/images/parc.png"
 
 const Places = () => {
     

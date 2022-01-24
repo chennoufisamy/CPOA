@@ -16,7 +16,9 @@ export default function Home() {
 	}
 
 	const cardsNewsInfos = {
-		news1: {image: "/images/news1.jpg", title: "Les dates de l'édition 2022 sont connues!", text:"L'Open Parc Auvergne-Rhône-Alpes est qualifié comme 'un des plus beaux tournois ATP 250, après avoir connu quatre premières éditions de très haut niveau en accueillant un plateau de joueurs internationaux extrêmement relevé comme par exemple : Stefanos TSITSIPAS, Jo-Wilfried TSONGA, Dominic THIEM, Gaël MONFILS, Juan Martin DEL POTRO, Milos RAONIC, Nick KYRGIOS, Denis SHAPOVALOV, Richard GASQUET, Felix AUGER-ALIASSIME …", link: "/news"}
+		news1: {image: "/images/news1.jpg", title: "Les dates de l'édition 2022 sont connues!", text:"L'Open Parc Auvergne-Rhône-Alpes est qualifié comme 'un des plus beaux tournois ATP 250, après avoir connu quatre premières éditions de très haut niveau en accueillant un plateau de joueurs internationaux extrêmement relevé comme par exemple : Stefanos TSITSIPAS, Jo-Wilfried TSONGA, Dominic THIEM, Gaël MONFILS, Juan Martin DEL POTRO, Milos RAONIC, Nick KYRGIOS, Denis SHAPOVALOV, Richard GASQUET, Felix AUGER-ALIASSIME …", link: "/news"},
+		news2: {image: "/images/news2.jpg", title: "La billetterie 2022 est ouverte!", text: "A quelques jours des fêtes de fin d’année, nous avons le plaisir de vous annoncer l’ouverture de la billetterie grand public de la 4ème édition de l’Open Parc Auvergne-Rhône-Alpes, qui se déroulera du 16 au 23 mai 2020", link: "/news"},
+		news3: {image: "/images/news3.jpg", title: "Dimanche 23 Mai - finales", text: "On s’attendait à un immense combat. Mais on savait également que Stefanos Tsitsipas était très en forme cette semaine. Dans un court central rempli à sa capacité d’accueil maximum, sous un soleil de plomb, le grec a tenu son rang de tête de série n°2 pour décrocher le septième titre de sa carrière à l’Open Parc Auvergne-Rhône-Alpes. Le numéro 5 mondial a dominé Cameron Norrie en deux manches (6-3, 6-3).", link: "/news"}
 	}
 
 	const cardsHome = [
@@ -25,9 +27,9 @@ export default function Home() {
 	]
 
 	const cardsNews = [
+		cardsNewsInfos.news2,
 		cardsNewsInfos.news1,
-		cardsNewsInfos.news1,
-		cardsNewsInfos.news1
+		cardsNewsInfos.news3
 	]
 
 	const refsHeader = {

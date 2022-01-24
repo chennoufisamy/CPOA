@@ -1,18 +1,9 @@
 import Head from "next/head";
 import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
-import PlayersList from "../../components/players/PlayersList";
 import styles from "../../styles/Players.module.css"
 
-export const getStaticProps = async () => {
-	const res = await fetch("http://localhost:3000/api/players");
-	const data = await res.json();
-	return {
-	  props: { players: data }
-	}
-}
-
-export default function Player({ players }) {
+export default function News() {
     return (
         <div className={styles.container}>
 			<Head>
@@ -24,9 +15,8 @@ export default function Player({ players }) {
 
 			<main className={styles.main}>
 				<Header />
-					<PlayersList players={players}/>
+                <img src="/images/rond.jpg" />
 			</main>
-			
 			<Footer />
     	</div>
     )
