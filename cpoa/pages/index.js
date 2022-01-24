@@ -62,7 +62,7 @@ export default function Home() {
 
 			<section className={styles.section_news} id="news">
 				<div className={styles.container_title}>
-					<h1 className={styles.main_title}>actualité</h1>
+					<h1 className={styles.main_title}>actualités</h1>
 				</div>
 				<CardNewsList cards={cardsNews}/>
 			</section>

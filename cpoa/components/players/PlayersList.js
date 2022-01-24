@@ -2,15 +2,13 @@ import styles from './PlayersList.module.css';
 
 const PlayersList = ({ players }) => {
   return (
-		<ul>
+		<ul className={styles.container_players}>
+			<h1>Liste des joueurs</h1>
 		{players.map((p) => (
 			<li key={p.id} className={styles.container_player}>
-				<p>{p.first_name}</p>
-				<p>{p.last_name}</p>
-				<p>{p.country}</p>
+				{p.first_name} {p.last_name}, {p.country}
 			</li>
 		))}
-		{console.log(players)}
     	</ul>
   	);
 };

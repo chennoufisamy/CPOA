@@ -7,7 +7,7 @@ const Header = ({ refs }) => {
 
     const navLinks = {
 		home: {name: "accueil", ref: typeof refs != "undefined" ? "#home" : "/"},
-        news: {name: "actualité", ref: typeof refs != "undefined" ? "#news" : "/news"},
+        news: {name: "actualités", ref: typeof refs != "undefined" ? "#news" : "/news"},
         ticketing: {name: "billetterie", ref: typeof refs != "undefined" ? "#tickets" : "/ticketing"},
         login: {name: "se connecter", ref: "/api/auth/login"},
         logout: {name: "se déconnecter", ref: "/api/auth/logout"},

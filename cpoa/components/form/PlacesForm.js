@@ -1,50 +1,51 @@
-import Form from "../form/Form";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import { useUser } from "@auth0/nextjs-auth0";
 import axios from 'axios';
+import styles from './form.module.css';
+import Input from './Input';
+import Option from './Option';
+import ButtonForm from './ButtonForm';
 
-export const getStaticProps = async () => {
-	const res = await fetch("http://localhost:3000/api/matchs");
-	const data = await res.json();
-	return {
-	  props: { matchs1: data }
-	}
-}
-
-const FormPlaces = ({ matchs1 }) => {
+const FormPlaces = () => {
 
     const router = useRouter();
     const { id } = router.query;
     const { user } = useUser();
 
     const [formData, setFormData] = useState({});
+    const [matchs, setMatchs] = useState([])
 
-    const matchs = {
-		match1: { value: "match1", text: "match1"},
-		match2: { value: "match2", text: "match2"},
-		match3: { value: "match3", text: "match3"}
-	};
+    useEffect(() => {
+        async function fetchData() {
+            const res = await axios.get("http://localhost:3000/api/matchs");
+            setMatchs(res.data);
+        }
+        fetchData();
+    }, []);
 
-	const selectMatchs = [
-		matchs.match1,
-		matchs.match2,
-		matchs.match3
-	];
+    const places = [
+        {id: "1", text: "catégorie 1"},
+        {id: "2", text: "catégorie 2"},
+        {id: "3", text: "loges"}
+    ]
+
+    const handleChange = event => {
+        const formDataCopy = { ...formData };
+        formDataCopy[event.target.name] = event.target.value;
+        setFormData(formDataCopy);
+    };
 
     const fields = {
         quantity: {type: "number", name: "quantity", text: "quantity", placeholder: "quantité", required: true},
         places: {type: "text", name: "places", text: "places", placeholder: "places", required: true},
-        matchs: {type: "select", name: "matchs", select: selectMatchs, required: true},
         age: {type: "checkbox", name: "age", text: "age", placeholder: "Moins de 12 ans?", required: false},
-        licence_number: {type: "text", name:"licence", text: "licence", placeholder: "numéro de licence", require: true},
+        licence_number: {type: "number", name:"licence", text: "licence", placeholder: "numéro de licence", require: true},
         discount_code: {type: "text", name:"discount", text: "discount", placeholder: "code promotionnel", require: true}
     };
 
     const formPlaces = [
-        fields.matchs,
         fields.quantity,
-        fields.places,
         fields.age
     ];
 
@@ -55,38 +56,38 @@ const FormPlaces = ({ matchs1 }) => {
     }
 
     const default_price = (day, cat) => {
-        if (!("age" in formData)) {
+        if ("age" in formData) {
             switch (day) {
-                case "sunday":
-                    return cat == 1 ? 30 : 25;
-                case "monday":
-                    return cat == 1 ? 30 : 25;
-                case "tuesday":
-                    return cat == 1 ? 30 : 25;
-                case "wednesday":
-                    return cat == 1 ? 40 : 30;
-                case "thursday":
-                    return cat == 1 ? 45 : 65;
-                case "friday":
-                    return cat == 1 ? 60 : 48;
-                case "saturday":
-                    return cat == 1 ? 60 : 48;
+                case "dimanche":
+                    return cat == 1 ? 30 : 20;
+                case "lundi":
+                    return cat == 1 ? 30 : 20;
+                case "mardi":
+                    return cat == 1 ? 30 : 20;
+                case "mercredi":
+                    return cat == 1 ? 40 : 25;
+                case "jeudi":
+                    return cat == 1 ? 45 : 30;
+                case "vendredi":
+                    return cat == 1 ? 60 : 38;
+                case "samedi":
+                    return cat == 1 ? 60 : 38;
             }
         }
         switch (day) {
-            case "sunday":
+            case "dimanche":
                 return cat == 1 ? 30 : 25;
-            case "monday":
+            case "lundi":
                 return cat == 1 ? 30 : 25;
-            case "tuesday":
+            case "mardi":
                 return cat == 1 ? 30 : 25;
-            case "wednesday":
+            case "mercredi":
                 return cat == 1 ? 40 : 30;
-            case "thursday":
+            case "jeudi":
                 return cat == 1 ? 45 : 65;
-            case "friday":
+            case "vendredi":
                 return cat == 1 ? 60 : 48;
-            case "saturday":
+            case "samedi":
                 return cat == 1 ? 60 : 48;
         }
         return 150;
@@ -99,15 +100,6 @@ const FormPlaces = ({ matchs1 }) => {
             let discount = 0.80;
         }
         return default_price(day, cat) * discount;
-    }
-
-    const get_cat = (place) => {
-        if (place.substring(1, 3) === "or") {
-            return 1;
-        } else if (place.substring(1, 3) === "gr") {
-            return 2;
-        } 
-        return 1;
     }
 
     const ticket_type = () => {
@@ -123,18 +115,28 @@ const FormPlaces = ({ matchs1 }) => {
         return 0;
     }
 
-    const pay = () => {
+    const pay = async () => {
+        let user_id = user.sub.split('|')[1];
+        let place = formData['places'];
+        let day = formData['match'].split(" ")[1];
+        let type = ticket_type();
+
         if (id === "bgp" || id === "tbm") {
             for (let i=0; i < formData['quantity']; i++) {
-                let user_id = user.sub.split('|')[1];
-                let place = formData['places']
-                let price = default_price("monday", get_cat(place));
-                let type = ticket_type();
-                let data = {content: [user_id, i, place, price, type]}
-                console.log("data " + data)
-                axios.post("http://localhost:3000/api/ticket", data)
+                let price = default_price(day, formData['places']);
+                let data = {content: [user_id, formData['match'].split(" ")[0], place, price, type]}
+                await axios.post("http://localhost:3000/api/ticket", data)
             }
-        }
+            return true;
+        } else if (id === "bjs" || id === "bl") {
+            for (let i=0; i < formData['quantity']; i++) {
+                let price = discount_price(day, formData['places']);
+                let data = {content: [user_id, formData['match'].split(" ")[0], place, price, type]}
+                await axios.post("http://localhost:3000/api/ticket", data)
+            }
+            return true;
+        } 
+        return false;
     }
 
     const redirect = () => {
@@ -147,22 +149,76 @@ const FormPlaces = ({ matchs1 }) => {
         }
     };
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        pay()
-        redirect();
+        if (await pay()) {
+            //Router.push('/payement');
+        }
+        //redirect();
     };
 
+    
+
     return (
-        
-        <Form
-            onSubmit={onSubmit}
-            formTitle="Choix des places"
-            setFormData={setFormData}
-            formStructure={formPlaces}
-            formData={formData}
-            buttonText="Payer"
-        />
+        <form className={styles.form} onSubmit={onSubmit}>
+            <h2 className={styles.title}>Choix du match</h2>
+            <select 
+            className={styles.select}
+            name={"match"}
+            value={formData['match']}
+            onChange={handleChange}>
+                <option>Sélectionner un match</option>
+                {matchs.map(m => (
+                    <Option
+                        key={m.id}
+                        value={`${m.id} ${m.day}`}
+                        text={`${m.day} - ${m.date} - court n°${m.court_id}`}
+                    />
+                ))}
+            </select>
+            <select 
+            className={styles.select}
+            name={"places"}
+            value={formData['places']}
+            onChange={handleChange}>
+                <option>Sélectionner une place</option>
+                {places.map(p => (
+                    <Option
+                        key={p.id}
+                        value={p.id}
+                        text={p.text}
+                    />
+                ))}
+            </select>
+            {formPlaces.map(m => (
+                m.type != "checkbox" ?
+                <Input
+                key={m.name}
+                type={m.type}
+                name={m.name}
+                id={m.name}
+                text={m.text}
+                handleChange={handleChange}
+                placeholder={m.placeholder}
+                required={m.required}
+                />
+                :
+                <div className={styles.container_ckeckbox}>
+                    <label for={m.name}>{m.placeholder}</label>
+                    <Input
+                        key={m.name}
+                        type={m.type}
+                        name={m.name}
+                        id={m.id}
+                        text={m.text}
+                        handleChange={handleChange}
+                        placeholder={m.placeholder}
+                        required={m.required}
+                    />
+                </div>
+            ))}
+            <ButtonForm buttonType='primary' text={"payer"} />
+        </form>
     )
 };
 

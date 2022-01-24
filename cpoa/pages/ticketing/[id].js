@@ -4,7 +4,6 @@ import Header from "../../components/header/header";
 import styles from "../../styles/Ticketing.module.css";
 import Places from "../../components/places/Places";
 import { useUser } from "@auth0/nextjs-auth0";
-import Router from 'next/router';
 
 export default function() {
 

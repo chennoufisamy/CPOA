@@ -84,6 +84,42 @@
     margin: 2rem 0;
 }
 
+.container_my_ticket {
+    margin-top: 4rem;
+}
+
+.my_ticket {
+    margin: 2rem;
+    padding: 1rem;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.my_ticket_title {
+    margin: 0;
+}
+
+.my_ticket_sub {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--text-2nd-color);
+}
+
+.my_ticket_info_container {
+    display: flex;
+}
+
+.my_ticket_info {
+    width: 50%;
+}
+
+.my_ticket_price {
+    margin: 0;
+}
+
 @media screen and (max-width: 1380px) {
 	.list_news {
         display: grid;

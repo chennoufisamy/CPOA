@@ -1,5 +1,6 @@
 import styles from './places.module.css';
 import PlacesForm from '../form/PlacesForm';
+import {image} from "../../public/images/parc.png"
 
 const Places = () => {
     
@@ -10,7 +11,7 @@ const Places = () => {
             <p className={styles.blue_sits}>{`${s}${i < 10 ? "0"+i : i}`}</p>
             )
         }
-        return sits_list
+        return sits_list;
     }
 
     const sits = (side, s, n) => {
@@ -29,10 +30,7 @@ const Places = () => {
     return (
         <div className={styles.container}>
             <div className={styles.container_places}>
-                {sits("nord", "n", 10)}
-                {sits("est", "e", 16)}
-                {sits("ouest", "w", 16)}
-                {sits("sud", "s", 10)}
+                <img src="/images/parc.png"/>
             </div>
             <PlacesForm />
         </div>

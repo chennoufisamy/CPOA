@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Input from './Input';
 import Option from './Option';
-import styles from './form.module.css'
+import styles from './form.module.css';
 import ButtonForm from './ButtonForm';
 import axios from 'axios';
 
@@ -9,23 +9,21 @@ const FormMatchDouble = ({ teams }) => {
 
     const [formData, setFormData] = useState({});
 
-    const fields = {
-        datetime: {type: "time", name: "datetime", text: "datetime", placeholder: "date et heure", required: true},
-        court: {type: "number", name: "court", text: "court", placeholder: "n° du court", required: true},
-    };
-
-    const formMatchDouble = [
-        fields.court
-    ];
+    const court = [
+        {text: "court principale", value: 1},
+        {text: "court n°1", value: 2},
+        {text: "court n°2", value: 3},
+        {text: "court n°3", value: 4},
+    ]
 
     const days = [
-        {text: "dimanche", value: "sunday"},
-        {text: "lundi", value: "monday"},
-        {text: "mardi", value: "tuesday"},
-        {text: "mercredi", value: "wednesday"},
-        {text: "jeudi", value: "thursday"},
-        {text: "vendredi", value: "friday"},
-        {text: "samedi", value: "saturday"}
+        {text: "dimanche", value: "dimanche"},
+        {text: "lundi", value: "lundi"},
+        {text: "mardi", value: "mardi"},
+        {text: "mercredi", value: "mercredi"},
+        {text: "jeudi", value: "jeudi"},
+        {text: "vendredi", value: "vendredi"},
+        {text: "samedi", value: "samedi"}
     ]
 
     const schedule = [
@@ -52,9 +50,7 @@ const FormMatchDouble = ({ teams }) => {
             if (matchs.length > 0) {
                 for(const m of matchs) {
                     if (m['court_id'] == formData['court'] && m['day'] == formData['day']) {
-                        let date_m = parseInt(m['date'].split(':').join(''))
-                        let date = parseInt(formData['datetime'].split(':').join(''))
-                        if (date != date_m) {
+                        if (m['date'] != formData['datetime']) {
                             return true;
                         } else {
                             alert("Horraire invalide");
@@ -104,23 +100,26 @@ const FormMatchDouble = ({ teams }) => {
     return (
         <form className={styles.form} onSubmit={onSubmit}>
             <h2 className={styles.title}>Ajouter un match double</h2>
-            {formMatchDouble.map(m => (
-                <Input
-                key={m.name}
-                type={m.type}
-                name={m.name}
-                id={m.name}
-                text={m.text}
-                handleChange={handleChange}
-                placeholder={m.placeholder}
-                required={m.required}
-                />
-            ))}
+            <select 
+            className={styles.select}
+            name={"court"}
+            value={formData['court']}
+            onChange={handleChange}>
+                <option>Sélectionner un court</option>
+                {court.map((p) => (
+                    <Option 
+                    key={p.value}
+                    value={p.value}
+                    text={p.text}
+                    />
+                ))}
+            </select>
             <select 
             className={styles.select}
             name={"datetime"}
             value={formData['datetime']}
             onChange={handleChange}>
+                <option>Sélectionner un horaire</option>
                 {schedule.map((p) => (
                     <Option 
                     key={p.value}
@@ -134,6 +133,7 @@ const FormMatchDouble = ({ teams }) => {
             name={"day"}
             value={formData['day']}
             onChange={handleChange}>
+                <option>Sélectionner un jour</option>
                 {days.map((p) => (
                     <Option 
                     key={p.value}
@@ -147,6 +147,7 @@ const FormMatchDouble = ({ teams }) => {
             name={"t1"}
             value={formData['t1']}
             onChange={handleChange}>
+                <option>Sélectionner l'équipe n°1</option>
                 {teams.map((p) => (
                     <Option 
                     key={p.id}
@@ -160,6 +161,7 @@ const FormMatchDouble = ({ teams }) => {
             name={"t2"}
             value={formData['t2']}
             onChange={handleChange}>
+                <option>Sélectionner l'équipe n°2</option>
                 {teams.map((p) => (
                     <Option 
                     key={p.id}

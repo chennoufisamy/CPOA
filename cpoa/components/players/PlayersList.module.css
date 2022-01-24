@@ -1,4 +1,9 @@
+.container_players {
+    margin-top: 4rem;
+}
+
 .container_player {
-    background-color: red;
+    margin: 0.5rem 0;
+    display: flex;
     text-transform: capitalize;
 }

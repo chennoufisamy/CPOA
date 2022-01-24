@@ -3,7 +3,17 @@ import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
 import styles from "../../styles/Program.module.css"
 
-export default function Program() {
+export const getStaticProps = async () => {
+	const res_s = await fetch("http://localhost:3000/api/matches_simple_info");
+	const data_s = await res_s.json();
+	const res_d = await fetch("http://localhost:3000/api/matches_double_info");
+	const data_d = await res_d.json();
+	return {
+	  props: { matches_simple: data_s, matches_double: data_d }
+	}
+}
+
+export default function Program({ matches_simple, matches_double }) {
     return (
         <div className={styles.container}>
 		<Head>
@@ -15,6 +25,46 @@ export default function Program() {
 
       	<main className={styles.main}>
 		  	<Header />
+			<div className={styles.container_matches}>
+			<div className={styles.container}>
+				<h1>Matchs simples</h1>
+				{matches_simple.map(m => (
+				<div className={styles.container_match}>
+					<h2>Match: {m.match_id}</h2>
+					<div className={styles.container_inner}>
+						<div>
+							<p className={styles.day}>Jour: {m.day}</p>
+							<p>{m.p1_fn} {m.p1_ln}, {m.p1_c}</p>
+							<p>Court: {m.court_id}</p>
+						</div>
+						<div>
+							<p>Heure: {m.date}</p>
+							<p>{m.p2_fn} {m.p2_ln}, {m.p2_c}</p>
+						</div>
+					</div>
+				</div>
+			))}
+			</div>
+			<div className={styles.container}>
+				<h1>Matchs doubles</h1>
+				{matches_double.map(m => (
+				<div className={styles.container_match}>
+					<h2>Match: {m.id}</h2>
+					<div className={styles.container_inner}>
+						<div>
+							<p className={styles.day}>Jour: {m.day}</p>
+							<p>Equipe n° {m.team1}</p>
+							<p>Court: {m.court_id}</p>
+						</div>
+						<div>
+							<p>Heure: {m.date}</p>
+							<p>Equipe n°{m.team2}</p>
+						</div>
+					</div>
+				</div>
+			))}
+			</div>
+			</div>
 		</main>
 		<Footer />
     </div>

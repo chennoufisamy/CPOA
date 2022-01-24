@@ -3,7 +3,7 @@ import { exec_query } from "../../lib/db";
 const handler = async (_, res) => {
     try {
       const results = await exec_query(`
-        SELECT * FROM player
+        SELECT * FROM player ORDER BY first_name, last_name, country
     `);
       return res.json(results);
     } catch (e) {
