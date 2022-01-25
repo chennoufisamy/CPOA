@@ -3,6 +3,7 @@ import styles from "./admin.module.css";
 import Option from "../form/Option";
 import ButtonForm from "../form/ButtonForm";
 import axios from 'axios';
+import MatchesDelete from './MatchesDelete';
 
 const MatchesItem = ({ match }) => {
 
@@ -97,6 +98,7 @@ const MatchesItem = ({ match }) => {
             </select>
             <ButtonForm buttonType='primary' text={"modifier"} />
             </form>
+            <MatchesDelete id={match.id}/>
         </div>
     )
 }
